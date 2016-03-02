@@ -1,38 +1,38 @@
 {
-    "name": "machinepack-jxm",
-    "version": "0.1.0",
-    "description": "Work with jxm.",
-    "scripts": {
-        "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
-    },
-    "repository"     : {
-        "type": "git",
-        "url" : "git@github.com:GuillaumeLiard/machinepack-jxm.git"
-    },
-    "keywords": [
-        "jxm",
-        "machines",
-        "machinepack"
-    ],
-    "author": "Guillaume Liard",
-    "license": "MIT",
-    "dependencies": {
-        "jxm": "^0.4.0",
-        "machine": "^10.0.0"
-    },
-    "devDependencies": {
-        "test-machinepack-mocha": "^2.0.0"
-    },
-    "machinepack": {
-        "friendlyName": "jxm",
-        "machineDir": "machines/",
-        "machines": [
-            "start-server",
-            "start-client"
-        ]
-    },
-    "bugs": {
-      "url": "https://github.com/GuillaumeLiard/machinepack-jxm/issues"
-    },
-    "homepage": "https://github.com/GuillaumeLiard/machinepack-jxm"
+  "name": "machinepack-jxm",
+  "version": "0.1.1",
+  "description": "Work with jxm.",
+  "scripts": {
+    "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:GuillaumeLiard/machinepack-jxm.git"
+  },
+  "keywords": [
+    "jxm",
+    "machines",
+    "machinepack"
+  ],
+  "author": "Guillaume Liard",
+  "license": "MIT",
+  "dependencies": {
+    "jxm": "^0.4.0",
+    "machine": "^10.0.0"
+  },
+  "devDependencies": {
+    "test-machinepack-mocha": "^2.0.0"
+  },
+  "machinepack": {
+    "friendlyName": "jxm",
+    "machineDir": "machines/",
+    "machines": [
+      "start-server",
+      "start-client"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/GuillaumeLiard/machinepack-jxm/issues"
+  },
+  "homepage": "https://github.com/GuillaumeLiard/machinepack-jxm"
 }
