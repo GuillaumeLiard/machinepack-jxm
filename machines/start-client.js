@@ -18,6 +18,11 @@ module.exports = {
 
 
     inputs: {
+        ipServer: {
+            example: '0.0.0.0',
+            description: 'The IP address of our server',
+            required: true
+        },
         serviceName: {
             example: 'Hello World',
             description: 'The name of our service',
@@ -27,7 +32,7 @@ module.exports = {
             example: 'Clap your hands',
             description: 'The message to send to the server',
             required: true
-        }
+        },
     },
 
 
@@ -54,8 +59,9 @@ module.exports = {
         var server = require('jxm');
 
 
+
         var client = server.createClient(null, inputs.serviceName,
-        "NUBISA-STANDARD-KEY-CHANGE-THIS", "0.0.0.0", 8000);
+        "NUBISA-STANDARD-KEY-CHANGE-THIS", inputs.ipServer, 8000);
 
         client.on('connect', function(client) {
             client.Call("serverMethod", inputs.message, function(param, err) {

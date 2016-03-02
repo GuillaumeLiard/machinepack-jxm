@@ -25,7 +25,7 @@ module.exports = {
     },
     baseUrlPath: {
         example: '/helloworld',
-        description: 'The base url path of our service',
+        description: 'The base url path of our service. If none is provided, inferred from serviceName',
         required: false
     },
 
