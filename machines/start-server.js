@@ -26,7 +26,7 @@ module.exports = {
     baseUrlPath: {
         example: '/helloworld',
         description: 'The base url path of our service',
-        required: true
+        required: false
     },
 
   },
@@ -48,12 +48,21 @@ module.exports = {
   ) {
 
       var server = require('jxm');
-      server.setApplication(inputs.serviceName, inputs.baseUrlPath, "NUBISA-STANDARD-KEY-CHANGE-THIS");
-      
+      var _ = require('lodash');
+      var baseUrlPath = null;
+
+      if (_.isUndefined(inputs.baseUrlPath)){
+          baseUrlPath = '/'.concat(inputs.serviceName);
+      } else {
+          baseUrlPath = inputs.baseUrlPath;
+      }
+
+
+      server.setApplication(inputs.serviceName, baseUrlPath, "NUBISA-STANDARD-KEY-CHANGE-THIS");
+
       server.addJSMethod("serverMethod", function (env, params) {
-          console.log("demande du client :");
-          console.log(params+ " World!" );
-         server.sendCallBack(env, params + " World!");
+          console.log('received :'.concat(params));
+         server.sendCallBack(env, 'Simon Says : '.concat(params));
       });
       server.start();
 

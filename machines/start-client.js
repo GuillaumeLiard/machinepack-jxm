@@ -23,12 +23,11 @@ module.exports = {
             description: 'The name of our service',
             required: true
         },
-        baseUrlPath: {
-            example: '/helloworld',
-            description: 'The base url path of our service',
+        message: {
+            example: 'Clap your hands',
+            description: 'The message to send to the server',
             required: true
-        },
-
+        }
     },
 
 
@@ -54,22 +53,20 @@ module.exports = {
     ) {
         var server = require('jxm');
 
+
         var client = server.createClient(null, inputs.serviceName,
         "NUBISA-STANDARD-KEY-CHANGE-THIS", "0.0.0.0", 8000);
 
-        console.log("client");
-        console.log(client);
-
         client.on('connect', function(client) {
-            client.Call("serverMethod", "Hello", function(param, err) {
+            client.Call("serverMethod", inputs.message, function(param, err) {
                 if (err) {
+                    client.Close();
                     return exits.serverCallFailed("Error while calling server's method. Code: ", err);
 
                 } else {
-                    return exits.success('answer of the server :' + param);
+                    client.Close();
+                    return exits.success(param);
                 }
-                client.Close();
-
             });
         });
 
@@ -78,7 +75,6 @@ module.exports = {
         });
 
         client.on('error', function(client, err) {
-            console.log(client.url);
             return exits.error("Error 1 : "+err);
         });
 
