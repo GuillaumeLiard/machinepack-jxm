@@ -1,9 +1,4 @@
-// var server = require('jxm');
-// server.setApplication("Hello World", "/helloworld", "NUBISA-STANDARD-KEY-CHANGE-THIS");
-// server.addJSMethod("serverMethod", function (env, params) {
-//    server.sendCallBack(env, params + " World!");
-// });
-// server.start();
+
 
 
 
@@ -41,7 +36,7 @@ module.exports = {
 
     success: {
         friendlyName: 'Server Started',
-        description: 'server successfully started',
+        description: 'Server successfully started',
         example: 'ok!',
     },
 
@@ -51,7 +46,15 @@ module.exports = {
   fn: function(inputs, exits
     /**/
   ) {
-    return exits.success('yes!');
+      console.log("init 1");
+      var server = require('jxm');
+      server.setApplication(inputs.serviceName, inputs.baseUrlPath, "NUBISA-STANDARD-KEY-CHANGE-THIS");
+      server.addJSMethod("serverMethod", function (env, params) {
+         server.sendCallBack(env, params + " World!");
+      });
+      server.start();
+
+    return exits.success('server started!');
   },
 
 
