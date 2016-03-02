@@ -5,10 +5,10 @@
 module.exports = {
 
 
-    friendlyName: 'Start server',
+    friendlyName: 'Start client',
 
 
-    description: 'machine used to launch a new instance of a jxm server',
+    description: 'Machine used to start an instance of a jxm client',
 
 
     cacheable: false,

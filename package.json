@@ -1,7 +1,8 @@
 {
   "name": "machinepack-jxm",
   "version": "0.1.1",
-  "description": "Work with jxm.",
+  "description": "Work with jxm",
+  "extendedDescription":"For now, just a proof of concept staging two agents playing one game of 'Simon Says'. Not unit tested, and surprisingly not that fun ;). But you can still geek your way into using machines to chat with a friend using only the command line terminal",
   "scripts": {
     "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
   },
