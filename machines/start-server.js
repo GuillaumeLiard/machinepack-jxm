@@ -46,10 +46,13 @@ module.exports = {
   fn: function(inputs, exits
     /**/
   ) {
-      console.log("init 1");
+
       var server = require('jxm');
       server.setApplication(inputs.serviceName, inputs.baseUrlPath, "NUBISA-STANDARD-KEY-CHANGE-THIS");
+      
       server.addJSMethod("serverMethod", function (env, params) {
+          console.log("demande du client :");
+          console.log(params+ " World!" );
          server.sendCallBack(env, params + " World!");
       });
       server.start();

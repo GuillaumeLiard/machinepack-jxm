@@ -33,6 +33,12 @@ module.exports = {
 
 
     exits: {
+        error: {
+            description: 'Unexpected error occurred.'
+        },
+        serverCallFailed: {
+            description: 'Error while calling server\'s method'
+        },
 
         success: {
             friendlyName: 'Client Started',
@@ -48,18 +54,22 @@ module.exports = {
     ) {
         var server = require('jxm');
 
-        var client = server.createClient(null, "helloworld",
-        "NUBISA-STANDARD-KEY-CHANGE-THIS", "localhost", 8000);
+        var client = server.createClient(null, inputs.serviceName,
+        "NUBISA-STANDARD-KEY-CHANGE-THIS", "0.0.0.0", 8000);
+
+        console.log("client");
+        console.log(client);
 
         client.on('connect', function(client) {
-            console.log("Client connected");
             client.Call("serverMethod", "Hello", function(param, err) {
                 if (err) {
-                    console.log("Error while calling server's method. Code: ", err);
+                    return exits.serverCallFailed("Error while calling server's method. Code: ", err);
+
                 } else {
-                    console.log("Received callback from the server:", param);
+                    return exits.success('answer of the server :' + param);
                 }
                 client.Close();
+
             });
         });
 
@@ -68,12 +78,13 @@ module.exports = {
         });
 
         client.on('error', function(client, err) {
-            console.log("Error:", err);
+            console.log(client.url);
+            return exits.error("Error 1 : "+err);
         });
 
         client.Connect();
 
-        return exits.success('client started!');
+
     },
 
 
